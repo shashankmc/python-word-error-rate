@@ -7,10 +7,11 @@ if len(sys.argv) != 3:
 f = open(sys.argv[1], 'r')
 r = f.read().split()
 f.close()
-
+r = [''.join(filter(str.isalpha, val)) for val in r]
 f = open(sys.argv[2], 'r')
 h = f.read().split()
 f.close()
+h = [''.join(filter(str.isalpha, val)) for val in h]
 
 print(f"Original:", r)
 
