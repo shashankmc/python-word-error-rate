@@ -1,7 +1,21 @@
 import word_error_rate as wer
+import sys
 
-r = ['In', 'computational', 'linguistics', 'and', 'computer', 'science', ',', 'edit', 'distance', 'is', 'a', 'way', 'of', 'quantifying', 'how', 'dissimilar', 'two', 'strings', 'are', 'to', 'one', 'another', 'by', 'counting', 'the', 'minimum', 'number', 'of', 'operations', 'required', 'to', 'transform', 'one', 'string', 'into', 'the', 'other.', 'Edit', 'distances', 'find', 'applications', 'in', 'natural', 'language', 'processing,', 'where', 'automatic', 'spelling', 'correction', 'can', 'determine', 'candidate', 'corrections', 'for', 'a', 'misspelled', 'word', 'by', 'selecting', 'words', 'from', 'a', 'dictionary', 'that', 'have', 'a', 'low', 'distance', 'to', 'the', 'word', 'in', 'question']
+if len(sys.argv) != 3:
+    raise ValueError('Please provide locations of the ground truth transcript and the generated transcript')
 
-h = ['In', 'linguistics', 'and', 'computer', 'science', 'theory', ',', 'edit', 'distance', 'iss', 'a', 'way', 'of', 'quantifying', 'how', 'dissimilar', 'the', 'two', 'string', 'is', 'to', 'one', 'another', 'by', 'counting', 'the', 'number', 'of', 'operations', 'required', 'to', 'transform', 'one', 'string', 'into', 'the', 'other.', 'Edit', 'distances', 'find', 'applications', 'in', 'natural', 'language', 'processing,', 'where', 'automatic', 'spelling', 'correction', 'can', 'determine', 'candidate', 'corrections', 'for', 'a', 'misspelled', 'word', 'by', 'selecting', 'words', 'from', 'a', 'dictionary', 'that', 'have', 'a', 'low', 'distance', 'to', 'the', 'words', 'in', 'question']
+f = open(sys.argv[1], 'r')
+r = f.read().split()
+f.close()
+
+f = open(sys.argv[2], 'r')
+h = f.read().split()
+f.close()
+
+print(f"Original:", r)
+
+print(f"Generated:", h)
+
+
 
 print("WER: {0:<6.6}%".format( wer.get_word_error_rate(r, h) ) ) 
